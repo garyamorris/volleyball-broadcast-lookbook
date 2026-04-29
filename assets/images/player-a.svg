@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" role="img" aria-label="Player image placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".45" stop-color="#ffef9b"/>
+      <stop offset="1" stop-color="#f15c24"/>
+    </linearGradient>
+  </defs>
+  <path d="M88 38c18 0 31 13 31 31s-13 31-31 31-31-13-31-31 13-31 31-31z" fill="url(#g)"/>
+  <path d="M47 112c27-15 61-15 88 0l14 124H34l13-124z" fill="#f6d14f"/>
+  <path d="M57 135h64l8 101H49l8-101z" fill="#1a4bb8" opacity=".82"/>
+  <path d="M34 119L8 181l30 10 27-62-31-10zM143 119l28 61-29 11-29-62 30-10z" fill="#f3d3af"/>
+  <path d="M52 112c21 11 52 11 73 0l11 26H40l12-26z" fill="#ffe36b"/>
+</svg>

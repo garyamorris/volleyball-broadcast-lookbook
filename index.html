@@ -21,30 +21,30 @@
     <main>
       <section class="section-band section-band--dark">
         <div class="section-heading">
-          <p class="kicker">01 / Anatomy</p>
+          <p class="kicker">01 / Clean Frame</p>
           <h2>Layered 16:9 broadcast frame</h2>
           <p>
-            The full-bleed match photograph is an image layer. Everything sitting on top of it
-            is an HTML/CSS interface layer that can be updated without editing the image.
+            The court image is now a clean cropped still. Scorebug, rail, sponsor, and lower third
+            are rendered by HTML/CSS so the image layer can be replaced without duplicated UI.
           </p>
         </div>
 
         <div class="anatomy-layout">
           <div class="frame-scroll">
-            <article class="broadcast-frame" style="--live-image: url('./mockups/9350d9a3-7bb2-44ff-88de-35b3094a10b3.jpg'); --live-size: 125% auto; --live-position: left top;">
-              <div class="live-image image-region" data-layer="IMAGE: live match photo"></div>
+            <article class="broadcast-frame" style="--match-image: url('./assets/images/clean-court.jpg')">
+              <div class="live-image image-slot-clean" aria-label="Replaceable live match image"></div>
               <div class="image-scrim"></div>
 
-              <div class="scorebug ui-region" data-layer="UI: scorebug">
+              <div class="scorebug scorebug--in-frame">
                 <div class="score-row score-row--leading">
-                  <span class="flag flag--slovenia"></span>
+                  <span class="flag-slot flag-slot--score flag-slot--right"><img src="./assets/flags/slovenia.svg" alt=""></span>
                   <span class="team">Slovenia</span>
                   <span class="ball-mark" aria-hidden="true"></span>
                   <strong>1</strong>
                   <strong>1</strong>
                 </div>
                 <div class="score-row">
-                  <span class="flag flag--argentina"></span>
+                  <span class="flag-slot flag-slot--score flag-slot--right"><img src="./assets/flags/argentina.svg" alt=""></span>
                   <span class="team">Argentina</span>
                   <span></span>
                   <strong>1</strong>
@@ -52,51 +52,37 @@
                 </div>
               </div>
 
-              <aside class="right-rail ui-region" data-layer="UI: right information rail">
-                <section class="rail-panel rail-panel--player">
+              <aside class="rail-shell rail-shell--frame">
+                <section class="rail-content player-rail">
                   <div class="ghost-number">18</div>
                   <div class="ghost-position">OS</div>
-                  <div class="portrait-slot image-slot" data-layer="IMAGE: player portrait">
-                    <span>Player portrait</span>
+                  <div class="portrait-slot image-slot-clean">
+                    <img src="./assets/images/player-a.svg" alt="Replaceable player portrait">
                   </div>
                   <div class="name-bar">
-                    <span class="mini-flag flag--slovenia"></span>
-                    <strong>T. STERN</strong>
+                    <span class="flag-slot flag-slot--name flag-slot--right"><img src="./assets/flags/slovenia.svg" alt=""></span>
+                    <strong>T. &Scaron;TERN</strong>
                   </div>
                   <dl class="stat-list">
-                    <div>
-                      <dt>Total points</dt>
-                      <dd>320</dd>
-                    </div>
-                    <div>
-                      <dt>Successful digs</dt>
-                      <dd>265</dd>
-                    </div>
-                    <div>
-                      <dt>Total set</dt>
-                      <dd>24</dd>
-                    </div>
-                    <div>
-                      <dt>Successful set</dt>
-                      <dd>21%</dd>
-                    </div>
+                    <div><dt>Total points</dt><dd>320</dd></div>
+                    <div><dt>Successful digs</dt><dd>265</dd></div>
+                    <div><dt>Total set</dt><dd>24</dd></div>
+                    <div><dt>Successful set</dt><dd>21%</dd></div>
                   </dl>
                   <p class="rail-footnote">25/26 competition statistics</p>
                 </section>
-
-                <section class="sponsor-tile ui-region" data-layer="UI: sponsor block">
+                <footer class="rail-footer sponsor-footer">
                   <p>Brought to you by</p>
-                  <strong>DECATHLON</strong>
-                </section>
+                  <img src="./assets/logos/decathlon.svg" alt="Decathlon">
+                </footer>
               </aside>
 
-              <section class="social-strip social-strip--no-avatar ui-region" data-layer="UI: social lower third">
-                <div class="avatar-slot image-slot" data-layer="IMAGE: avatar"></div>
-                <div>
-                  <p class="social-name">Leonard Brown <span>@leob1993</span></p>
+              <section class="social-strip social-strip--instagram">
+                <div class="social-text">
+                  <p class="social-name-row"><strong>Leonard Brown</strong><span>@LEOB1993</span></p>
                   <p class="social-copy">
-                    Volleyball Nations League never fails to deliver epic rallies, jaw-dropping
-                    blocks, and insane spikes. Can't wait to see my favorite team dominate.
+                    Volleyball Nations League never fails to deliver epic rallies, jaw-dropping blocks,
+                    and insane spikes. Can't wait to see my favorite team dominate.
                   </p>
                 </div>
                 <span class="channel-badge channel-badge--instagram" aria-label="Instagram"></span>
@@ -107,19 +93,16 @@
           <aside class="annotation-panel">
             <h3>Replaceable Images</h3>
             <ul class="annotation-list">
-              <li><span class="tag tag--image">Image</span>Full-screen match photo or video still.</li>
-              <li><span class="tag tag--image">Image</span>Player portrait cutout inside the right rail.</li>
-              <li><span class="tag tag--image">Image</span>Small fan/profile avatar in the lower third.</li>
-              <li><span class="tag tag--image">Image</span>Optional sponsor or venue photography in rail footers.</li>
+              <li><span class="tag tag--image">Image</span>`--match-image` controls the full-frame court/photo layer.</li>
+              <li><span class="tag tag--image">Image</span>Portraits are `img` slots with fixed safe areas.</li>
+              <li><span class="tag tag--image">Image</span>Avatar and sponsor backgrounds are separate slots, not baked into UI.</li>
             </ul>
 
             <h3>Interface Pieces</h3>
             <ul class="annotation-list">
-              <li><span class="tag tag--ui">UI</span>Scorebug, flags, team names, and score cells.</li>
-              <li><span class="tag tag--ui">UI</span>Right rail panels, stat rows, lineup rows, and labels.</li>
-              <li><span class="tag tag--ui">UI</span>Bottom social post bar and source badge.</li>
-              <li><span class="tag tag--ui">UI</span>Social channel badge variants for Instagram, YouTube, TikTok, X, and Facebook.</li>
-              <li><span class="tag tag--ui">UI</span>Gradients, dark scrims, angled bars, logos, and typography.</li>
+              <li><span class="tag tag--ui">UI</span>Scorebug, rails, stat rows, footers, and social strips are CSS/HTML.</li>
+              <li><span class="tag tag--ui">UI</span>Flags and logos use local SVG assets inside clipped wrappers.</li>
+              <li><span class="tag tag--ui">UI</span>Clean previews are separate from explanatory annotation text.</li>
             </ul>
           </aside>
         </div>
@@ -127,9 +110,9 @@
 
       <section class="section-band">
         <div class="section-heading">
-          <p class="kicker">02 / Components</p>
+          <p class="kicker">02 / Frame-Scale Fixtures</p>
           <h2>Reusable overlay parts</h2>
-          <p>These are the pieces to compose different broadcast graphics from the same style system.</p>
+          <p>Rails and lower thirds are shown in broadcast-derived fixtures so scale and rhythm can be checked directly.</p>
         </div>
 
         <div class="component-grid">
@@ -140,14 +123,14 @@
             </div>
             <div class="scorebug scorebug--sample">
               <div class="score-row score-row--leading">
-                <span class="flag flag--slovenia"></span>
+                <span class="flag-slot flag-slot--score flag-slot--right"><img src="./assets/flags/slovenia.svg" alt=""></span>
                 <span class="team">Slovenia</span>
                 <span class="ball-mark" aria-hidden="true"></span>
                 <strong>1</strong>
                 <strong>1</strong>
               </div>
               <div class="score-row">
-                <span class="flag flag--argentina"></span>
+                <span class="flag-slot flag-slot--score flag-slot--right"><img src="./assets/flags/argentina.svg" alt=""></span>
                 <span class="team">Argentina</span>
                 <span></span>
                 <strong>1</strong>
@@ -161,60 +144,90 @@
               <span class="tag tag--ui">UI</span>
               <h3>Player Stat Rail</h3>
             </div>
-            <section class="rail-demo rail-panel rail-panel--player">
-              <div class="ghost-number">18</div>
-              <div class="ghost-position">OS</div>
-              <div class="portrait-slot image-slot" data-layer="IMAGE: portrait">
-                <span>Image</span>
-              </div>
-              <div class="name-bar">
-                <span class="mini-flag flag--slovenia"></span>
-                <strong>T. STERN</strong>
-              </div>
-              <dl class="stat-list">
-                <div><dt>Total points</dt><dd>320</dd></div>
-                <div><dt>Successful digs</dt><dd>265</dd></div>
-                <div><dt>Total set</dt><dd>24</dd></div>
-                <div><dt>Successful set</dt><dd>21%</dd></div>
-              </dl>
-            </section>
+            <div class="rail-fixture">
+              <section class="rail-content player-rail">
+                <div class="ghost-number">18</div>
+                <div class="ghost-position">OS</div>
+                <div class="portrait-slot image-slot-clean">
+                  <img src="./assets/images/player-a.svg" alt="Replaceable player portrait">
+                </div>
+                <div class="name-bar">
+                  <span class="flag-slot flag-slot--name flag-slot--right"><img src="./assets/flags/slovenia.svg" alt=""></span>
+                  <strong>T. &Scaron;TERN</strong>
+                </div>
+                <dl class="stat-list">
+                  <div><dt>Total points</dt><dd>320</dd></div>
+                  <div><dt>Successful digs</dt><dd>265</dd></div>
+                  <div><dt>Total set</dt><dd>24</dd></div>
+                  <div><dt>Successful set</dt><dd>21%</dd></div>
+                </dl>
+                <p class="rail-footnote">25/26 competition statistics</p>
+              </section>
+              <footer class="rail-footer sponsor-footer">
+                <p>Brought to you by</p>
+                <img src="./assets/logos/decathlon.svg" alt="Decathlon">
+              </footer>
+            </div>
           </article>
 
           <article class="component-card">
             <div class="component-title">
               <span class="tag tag--ui">UI</span>
-              <h3>Head-To-Head Stats</h3>
+              <h3>Head-To-Head Rail</h3>
             </div>
-            <section class="comparison-panel">
-              <h4>VNL 2026 Player Stats</h4>
-              <div class="duel-portraits">
-                <div class="image-slot" data-layer="IMAGE: player A">
-                  <span class="position-label">OH</span>
-                  <span class="jersey-number">21</span>
+            <div class="rail-frame-fixture">
+              <div class="scorebug scorebug--fixture">
+                <div class="score-row score-row--leading">
+                  <span class="flag-slot flag-slot--score flag-slot--right"><img src="./assets/flags/slovenia.svg" alt=""></span>
+                  <span class="team">Slovenia</span>
+                  <span class="ball-mark" aria-hidden="true"></span>
+                  <strong>1</strong>
+                  <strong>1</strong>
                 </div>
-                <div class="image-slot" data-layer="IMAGE: player B">
-                  <span class="position-label">OP</span>
-                  <span class="jersey-number">18</span>
+                <div class="score-row">
+                  <span class="flag-slot flag-slot--score flag-slot--right"><img src="./assets/flags/argentina.svg" alt=""></span>
+                  <span class="team">Argentina</span>
+                  <span></span>
+                  <strong>1</strong>
+                  <strong>1</strong>
                 </div>
               </div>
-              <div class="duel-country-strip">
-                <span class="flag flag--japan"></span>
-                <strong>Y. WADA</strong>
-                <span class="duel-mark">VNL</span>
-                <strong>P. EGONU</strong>
-                <span class="flag flag--italy"></span>
+              <div class="rail-fixture">
+                <section class="rail-content h2h-rail">
+                  <h4>VNL 2026 Player Stats</h4>
+                  <div class="duel-scene">
+                    <div class="duel-side duel-side--left">
+                      <span class="position-label">OH</span>
+                      <span class="jersey-number">21</span>
+                      <img src="./assets/images/player-a.svg" alt="Replaceable player A">
+                    </div>
+                    <div class="duel-side duel-side--right">
+                      <span class="position-label">OP</span>
+                      <span class="jersey-number">18</span>
+                      <img src="./assets/images/player-b.svg" alt="Replaceable player B">
+                    </div>
+                  </div>
+                  <div class="duel-country-strip">
+                    <span class="duel-flag duel-flag--left"><img src="./assets/flags/japan.svg" alt=""></span>
+                    <strong class="duel-name">Y. WADA</strong>
+                    <span class="duel-logo"><img src="./assets/logos/vnl.svg" alt="VNL"></span>
+                    <strong class="duel-name">P. EGONU</strong>
+                    <span class="duel-flag duel-flag--right"><img src="./assets/flags/italy.svg" alt=""></span>
+                  </div>
+                  <dl class="versus-stats">
+                    <div><dd>40</dd><dt>Total points</dt><dd>23</dd></div>
+                    <div><dd>103</dd><dt>Successful digs</dt><dd>60</dd></div>
+                    <div><dd>1251</dd><dt>Total set</dt><dd>553</dd></div>
+                    <div><dd>21%</dd><dt>Successful set</dt><dd>21%</dd></div>
+                  </dl>
+                  <p class="rail-footnote">2026 competition statistics</p>
+                </section>
+                <footer class="rail-footer sponsor-footer sponsor-footer--photo">
+                  <p>Brought to you by</p>
+                  <img src="./assets/logos/decathlon.svg" alt="Decathlon">
+                </footer>
               </div>
-              <dl class="versus-stats">
-                <div><dd>40</dd><dt>Total points</dt><dd>23</dd></div>
-                <div><dd>103</dd><dt>Successful digs</dt><dd>60</dd></div>
-                <div><dd>1251</dd><dt>Total set</dt><dd>553</dd></div>
-                <div><dd>21%</dd><dt>Successful set</dt><dd>21%</dd></div>
-              </dl>
-              <div class="comparison-footer">
-                <p>Brought to you by</p>
-                <strong>DECATHLON</strong>
-              </div>
-            </section>
+            </div>
           </article>
 
           <article class="component-card">
@@ -222,60 +235,66 @@
               <span class="tag tag--ui">UI</span>
               <h3>Starting Lineup Rail</h3>
             </div>
-            <section class="lineup-panel">
-              <p>Women's Brazil starting lineup</p>
-              <div class="country-banner">
-                <span class="flag flag--brazil"></span>
-                <strong>Brazil</strong>
-              </div>
-              <ol class="lineup-list">
-                <li><span>10</span><span class="lineup-name"><strong>Gabi</strong><em> - (OC)</em></span></li>
-                <li><span>08</span><span class="lineup-name"><strong>Julia</strong><em> - (MB)</em></span></li>
-                <li><span>09</span><span class="lineup-name"><strong>Roberta</strong><em> - (S)</em></span></li>
-                <li><span>15</span><span class="lineup-name"><strong>Helena</strong><em> - (OC)</em></span></li>
-                <li><span>18</span><span class="lineup-name"><strong>Jheovana</strong><em> - (O)</em></span></li>
-                <li><span>02</span><span class="lineup-name"><strong>Diana</strong><em> - (MB)</em></span></li>
-              </ol>
-              <div class="coach-row"><span>Coach</span><strong>Ze Roberto</strong></div>
-              <p class="lineup-meta">Pool Week 3 Brazil vs Italy</p>
-              <div class="lineup-footer">
-                <strong>VNL</strong>
+            <div class="rail-fixture">
+              <section class="rail-content lineup-rail">
+                <p class="lineup-title">Women's Brazil starting lineup</p>
+                <div class="country-banner">
+                  <span class="flag-slot flag-slot--country flag-slot--right"><img src="./assets/flags/brazil.svg" alt=""></span>
+                  <strong>Brazil</strong>
+                </div>
+                <ol class="lineup-list">
+                  <li><span>10</span><span class="lineup-name"><strong>Gabi</strong><em>&nbsp;&middot; (OC)</em></span></li>
+                  <li><span>08</span><span class="lineup-name"><strong>Julia</strong><em>&nbsp;&middot; (MB)</em></span></li>
+                  <li><span>09</span><span class="lineup-name"><strong>Roberta</strong><em>&nbsp;&middot; (S)</em></span></li>
+                  <li><span>15</span><span class="lineup-name"><strong>Helena</strong><em>&nbsp;&middot; (OC)</em></span></li>
+                  <li><span>18</span><span class="lineup-name"><strong>Jheovana</strong><em>&nbsp;&middot; (O)</em></span></li>
+                  <li><span>02</span><span class="lineup-name"><strong>Diana</strong><em>&nbsp;&middot; (MB)</em></span></li>
+                </ol>
+                <div class="coach-row"><span>Coach</span><strong>Ze Roberto</strong></div>
+                <p class="lineup-meta">Pool Week 3 Brazil vs Italy</p>
+              </section>
+              <footer class="rail-footer vnl-footer">
+                <img src="./assets/logos/vnl.svg" alt="VNL">
                 <span>Volleyball Nations League</span>
-              </div>
-            </section>
+              </footer>
+            </div>
           </article>
 
           <article class="component-card component-card--wide">
             <div class="component-title">
               <span class="tag tag--ui">UI</span>
-              <h3>Social Lower Third</h3>
+              <h3>Social Lower Third States</h3>
             </div>
-            <section class="social-strip social-strip--sample">
-              <div class="avatar-slot image-slot" data-layer="IMAGE: avatar"></div>
-              <div>
-                <p class="social-name">Leonard Brown <span>@leob1993</span></p>
-                <p class="social-copy">
-                  Volleyball Nations League never fails to deliver epic rallies, jaw-dropping
-                  blocks, and insane spikes. #VNL
-                </p>
-              </div>
-              <div class="channel-badges" aria-label="Social channel badge variants">
+            <div class="social-stack">
+              <section class="social-strip social-strip--sample social-strip--instagram">
+                <div class="social-text">
+                  <p class="social-name-row"><strong>Leonard Brown</strong><span>@LEOB1993</span></p>
+                  <p class="social-copy">Volleyball Nations League never fails to deliver epic rallies, jaw-dropping blocks, and insane spikes. #VNL</p>
+                </div>
                 <span class="channel-badge channel-badge--instagram" aria-label="Instagram"></span>
+              </section>
+              <section class="social-strip social-strip--sample social-strip--youtube social-strip--with-avatar" style="--avatar-image: url('./assets/images/avatar.svg')">
+                <div class="avatar-slot image-slot-clean" aria-label="Replaceable avatar"></div>
+                <div class="social-text">
+                  <p class="social-name-row"><strong>Leonard Brown</strong><span>@LEOB1993</span></p>
+                  <p class="social-copy">Volleyball Nations League never fails to deliver epic rallies, jaw-dropping blocks, and insane spikes. #VNL</p>
+                </div>
                 <span class="channel-badge channel-badge--youtube" aria-label="YouTube"></span>
-                <span class="channel-badge channel-badge--tiktok" aria-label="TikTok"></span>
-                <span class="channel-badge channel-badge--x" aria-label="X"></span>
-                <span class="channel-badge channel-badge--facebook" aria-label="Facebook"></span>
-              </div>
-            </section>
+              </section>
+            </div>
           </article>
 
           <article class="component-card component-card--wide">
             <div class="component-title">
-              <span class="tag tag--image">Image</span>
-              <h3>Image Treatment</h3>
+              <span class="tag tag--ui">UI</span>
+              <h3>Channel Badge Variants</h3>
             </div>
-            <div class="image-treatment" style="--live-image: url('./mockups/b3851faf-7694-4d0f-b6c7-08df08685319.jpg')">
-              <span>Full-bleed image + navy scrim + red/blue edge glow</span>
+            <div class="channel-variant-grid">
+              <span class="channel-badge channel-badge--instagram" aria-label="Instagram"></span>
+              <span class="channel-badge channel-badge--youtube" aria-label="YouTube"></span>
+              <span class="channel-badge channel-badge--tiktok" aria-label="TikTok"></span>
+              <span class="channel-badge channel-badge--x" aria-label="X"></span>
+              <span class="channel-badge channel-badge--facebook" aria-label="Facebook"></span>
             </div>
           </article>
         </div>
@@ -299,21 +318,19 @@
               <span style="--swatch: #ffffff">White type</span>
             </div>
           </article>
-
           <article class="token-block">
             <h3>Typography</h3>
-            <p class="type-sample type-sample--display">18 T. STERN</p>
+            <p class="type-sample type-sample--display">18 T. &Scaron;TERN</p>
             <p class="type-sample type-sample--label">TOTAL POINTS 320</p>
             <p class="type-note">Condensed uppercase sports type, heavy weights, tight vertical rhythm.</p>
           </article>
-
           <article class="token-block">
-            <h3>Surface</h3>
+            <h3>Swap Points</h3>
             <ul class="surface-list">
-              <li>Dark translucent panels over image.</li>
-              <li>Blue-to-violet gradients with red accents.</li>
-              <li>Angled row ends and skewed stat bars.</li>
-              <li>Large outline or ghost numbers behind portraits.</li>
+              <li>`--match-image` for the live action still.</li>
+              <li>`img` slots for player cutouts, flags, and logos.</li>
+              <li>`--avatar-image` for social thumbnails.</li>
+              <li>Rail shell locks the broadcast 256px width and 506px/144px split.</li>
             </ul>
           </article>
         </div>
