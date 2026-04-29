@@ -31,7 +31,7 @@
 
         <div class="anatomy-layout">
           <div class="frame-scroll">
-            <article class="broadcast-frame" style="--live-image: url('./mockups/9350d9a3-7bb2-44ff-88de-35b3094a10b3.jpg')">
+            <article class="broadcast-frame" style="--live-image: url('./mockups/9350d9a3-7bb2-44ff-88de-35b3094a10b3.jpg'); --live-size: 125% auto; --live-position: left top;">
               <div class="live-image image-region" data-layer="IMAGE: live match photo"></div>
               <div class="image-scrim"></div>
 
@@ -39,7 +39,7 @@
                 <div class="score-row score-row--leading">
                   <span class="flag flag--slovenia"></span>
                   <span class="team">Slovenia</span>
-                  <span class="ball-mark">v</span>
+                  <span class="ball-mark" aria-hidden="true"></span>
                   <strong>1</strong>
                   <strong>1</strong>
                 </div>
@@ -55,6 +55,7 @@
               <aside class="right-rail ui-region" data-layer="UI: right information rail">
                 <section class="rail-panel rail-panel--player">
                   <div class="ghost-number">18</div>
+                  <div class="ghost-position">OS</div>
                   <div class="portrait-slot image-slot" data-layer="IMAGE: player portrait">
                     <span>Player portrait</span>
                   </div>
@@ -89,7 +90,7 @@
                 </section>
               </aside>
 
-              <section class="social-strip ui-region" data-layer="UI: social lower third">
+              <section class="social-strip social-strip--no-avatar ui-region" data-layer="UI: social lower third">
                 <div class="avatar-slot image-slot" data-layer="IMAGE: avatar"></div>
                 <div>
                   <p class="social-name">Leonard Brown <span>@leob1993</span></p>
@@ -98,7 +99,7 @@
                     blocks, and insane spikes. Can't wait to see my favorite team dominate.
                   </p>
                 </div>
-                <div class="network-pill">IG</div>
+                <span class="channel-badge channel-badge--instagram" aria-label="Instagram"></span>
               </section>
             </article>
           </div>
@@ -117,6 +118,7 @@
               <li><span class="tag tag--ui">UI</span>Scorebug, flags, team names, and score cells.</li>
               <li><span class="tag tag--ui">UI</span>Right rail panels, stat rows, lineup rows, and labels.</li>
               <li><span class="tag tag--ui">UI</span>Bottom social post bar and source badge.</li>
+              <li><span class="tag tag--ui">UI</span>Social channel badge variants for Instagram, YouTube, TikTok, X, and Facebook.</li>
               <li><span class="tag tag--ui">UI</span>Gradients, dark scrims, angled bars, logos, and typography.</li>
             </ul>
           </aside>
@@ -140,7 +142,7 @@
               <div class="score-row score-row--leading">
                 <span class="flag flag--slovenia"></span>
                 <span class="team">Slovenia</span>
-                <span class="ball-mark">v</span>
+                <span class="ball-mark" aria-hidden="true"></span>
                 <strong>1</strong>
                 <strong>1</strong>
               </div>
@@ -161,6 +163,7 @@
             </div>
             <section class="rail-demo rail-panel rail-panel--player">
               <div class="ghost-number">18</div>
+              <div class="ghost-position">OS</div>
               <div class="portrait-slot image-slot" data-layer="IMAGE: portrait">
                 <span>Image</span>
               </div>
@@ -185,12 +188,21 @@
             <section class="comparison-panel">
               <h4>VNL 2026 Player Stats</h4>
               <div class="duel-portraits">
-                <div class="image-slot" data-layer="IMAGE: player A">OH 21</div>
-                <div class="image-slot" data-layer="IMAGE: player B">OP 18</div>
+                <div class="image-slot" data-layer="IMAGE: player A">
+                  <span class="position-label">OH</span>
+                  <span class="jersey-number">21</span>
+                </div>
+                <div class="image-slot" data-layer="IMAGE: player B">
+                  <span class="position-label">OP</span>
+                  <span class="jersey-number">18</span>
+                </div>
               </div>
-              <div class="duel-names">
-                <span><i class="flag flag--japan"></i>Y. Wada</span>
-                <span>P. Egonu<i class="flag flag--italy"></i></span>
+              <div class="duel-country-strip">
+                <span class="flag flag--japan"></span>
+                <strong>Y. WADA</strong>
+                <span class="duel-mark">VNL</span>
+                <strong>P. EGONU</strong>
+                <span class="flag flag--italy"></span>
               </div>
               <dl class="versus-stats">
                 <div><dd>40</dd><dt>Total points</dt><dd>23</dd></div>
@@ -198,6 +210,10 @@
                 <div><dd>1251</dd><dt>Total set</dt><dd>553</dd></div>
                 <div><dd>21%</dd><dt>Successful set</dt><dd>21%</dd></div>
               </dl>
+              <div class="comparison-footer">
+                <p>Brought to you by</p>
+                <strong>DECATHLON</strong>
+              </div>
             </section>
           </article>
 
@@ -213,14 +229,19 @@
                 <strong>Brazil</strong>
               </div>
               <ol class="lineup-list">
-                <li><span>10</span><strong>Gabi</strong><em>(OC)</em></li>
-                <li><span>08</span><strong>Julia</strong><em>(MB)</em></li>
-                <li><span>09</span><strong>Roberta</strong><em>(S)</em></li>
-                <li><span>15</span><strong>Helena</strong><em>(OC)</em></li>
-                <li><span>18</span><strong>Jheovana</strong><em>(O)</em></li>
-                <li><span>02</span><strong>Diana</strong><em>(MB)</em></li>
+                <li><span>10</span><span class="lineup-name"><strong>Gabi</strong><em> - (OC)</em></span></li>
+                <li><span>08</span><span class="lineup-name"><strong>Julia</strong><em> - (MB)</em></span></li>
+                <li><span>09</span><span class="lineup-name"><strong>Roberta</strong><em> - (S)</em></span></li>
+                <li><span>15</span><span class="lineup-name"><strong>Helena</strong><em> - (OC)</em></span></li>
+                <li><span>18</span><span class="lineup-name"><strong>Jheovana</strong><em> - (O)</em></span></li>
+                <li><span>02</span><span class="lineup-name"><strong>Diana</strong><em> - (MB)</em></span></li>
               </ol>
               <div class="coach-row"><span>Coach</span><strong>Ze Roberto</strong></div>
+              <p class="lineup-meta">Pool Week 3 Brazil vs Italy</p>
+              <div class="lineup-footer">
+                <strong>VNL</strong>
+                <span>Volleyball Nations League</span>
+              </div>
             </section>
           </article>
 
@@ -238,7 +259,13 @@
                   blocks, and insane spikes. #VNL
                 </p>
               </div>
-              <div class="network-pill">YT</div>
+              <div class="channel-badges" aria-label="Social channel badge variants">
+                <span class="channel-badge channel-badge--instagram" aria-label="Instagram"></span>
+                <span class="channel-badge channel-badge--youtube" aria-label="YouTube"></span>
+                <span class="channel-badge channel-badge--tiktok" aria-label="TikTok"></span>
+                <span class="channel-badge channel-badge--x" aria-label="X"></span>
+                <span class="channel-badge channel-badge--facebook" aria-label="Facebook"></span>
+              </div>
             </section>
           </article>
 
